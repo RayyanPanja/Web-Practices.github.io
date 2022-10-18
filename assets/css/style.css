@@ -1,0 +1,120 @@
+@import url(root.css);
+
+.hero {
+    position: relative;
+    padding: 10px;
+    padding-top: 5%;
+    width: 100%;
+    height: 98vh;
+    overflow: hidden;
+    background: #000;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0.25;
+}
+
+.hero-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+}
+
+.hero-logo h1,
+.hero-logo p {
+    color: #efefefea;
+}
+
+/* About Us  */
+.details {
+    position: relative;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    height: 30vh;
+}
+
+/* Profile Cards */
+.card-wrap {
+    position: relative;
+    width: 100%;
+    height: 30vh;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid purple;
+    background: #f4f1f1;
+}
+
+.card-wrap * {
+    color: #000;
+
+}
+
+.profile {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 180px;
+    border: 2px double purple;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.profile img {
+    width: 100%;
+    height: 100%;
+}
+
+.card-wrap .name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.card-wrap .skill {
+    position: absolute;
+    bottom: 5%;
+}
+
+.side-para {
+    width: 50%;
+    padding: 10px;
+    height: 100vh;
+}
+
+.para{
+    width: 70%;
+    padding: 10px;
+}
+.side-para-img {
+    display: block;
+    position: absolute;
+    left: 70%;
+    top: 20%;
+    height: 30vh;
+    border-radius: 20px;
+    background: black;
+    transform: rotate(-30deg);
+}
+
+.side-para-img img {
+    width: 100%;
+    height: 70vh;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 2px grey,
+        0 0 30px 2px #383737,
+        0 0 40px 2px #000;
+    user-select: none;
+    -webkit-user-drag: none;
+}
