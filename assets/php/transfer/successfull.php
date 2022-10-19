@@ -10,7 +10,7 @@ $Amount;
 $hisacc;
 $hisname;
 
-$Fetch = "SELECT * FROM `transaction` WHERE `transaction`.`From_Acc` = $myacc ORDER BY `Date` DESC;";
+$Fetch = "SELECT * FROM `transaction` WHERE `transaction`.`From_Acc` = $myacc ORDER BY `Date` ASC;";
 $Result = mysqli_query($con, $Fetch);
 while ($data = mysqli_fetch_row($Result)) {
     $ID = $data[0];
@@ -145,7 +145,7 @@ while ($data = mysqli_fetch_row($Result)) {
         const txt = document.querySelector('#success-text');
         setTimeout(() => {
             tick.style.transition = "all 500ms";
-            tick.style.transform = "translateY(-100px)";
+            tick.style.transform = "translateY(-110px)";
             setInterval(() => {
                 txt.style.transition = "all 500ms";
                 txt.style.fontSize = 35 + "px";
@@ -153,8 +153,8 @@ while ($data = mysqli_fetch_row($Result)) {
             setInterval(() => {
                 receipt.style.transition = "all 500ms";
                 receipt.style.width = 25 + "%";
-                receipt.style.padding = 5 + "px";
-                receipt.style.height = 30 + "vh";
+                receipt.style.padding = 10 + "px";
+                receipt.style.height = 32 + "vh";
 
             }, 1500);
         }, 1000);
@@ -164,3 +164,9 @@ while ($data = mysqli_fetch_row($Result)) {
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 </html>
+<?php
+$ID = 0;
+$Amount = 0;
+$hisacc = 0;
+$hisname = null;
+?>

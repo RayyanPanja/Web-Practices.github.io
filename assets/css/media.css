@@ -12,7 +12,6 @@
     .navbar {
         padding: 30px;
     }
-
     .link {
         display: none;
     }
@@ -56,6 +55,16 @@
     }
 
     .details {
+        width: 100%;
+    }
+    .profile{
+        width: 100px;
+        height: 100px;
+    }
+    .scroll-x{
+        overflow-x: scroll;
+    }
+    .card-wrap{
         width: 100%;
     }
 }

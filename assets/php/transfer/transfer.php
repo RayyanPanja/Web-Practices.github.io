@@ -130,7 +130,7 @@ while ($data = mysqli_fetch_assoc($Result)) {
             </div>
         </div>
 
-        <div class="details">
+        <div class="transfer-details">
             <div class="detail">
                 <h1>Account Holder</h1>
                 <h1 class="value"><?php echo $Name; ?></h1>

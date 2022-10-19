@@ -58,11 +58,13 @@
 
 }
 
+.profile,.profile img{
+    border-radius: 75px 0 75px 0;
+    transition: all 1000ms;
+}
+
 .profile {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 200px;
     height: 180px;
     border: 2px double purple;
@@ -73,7 +75,15 @@
 .profile img {
     width: 100%;
     height: 100%;
+    border-radius: 75px 0 75px 0;
+    transition: all 1000ms;
 }
+
+.profile:hover,
+.profile img:hover {
+    border-radius: 0 75px 0 75px;
+}
+
 
 .card-wrap .name {
     position: absolute;
@@ -93,10 +103,11 @@
     height: 100vh;
 }
 
-.para{
+.para {
     width: 70%;
     padding: 10px;
 }
+
 .side-para-img {
     display: block;
     position: absolute;

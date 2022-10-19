@@ -66,6 +66,9 @@ section {
 .no-gap {
     gap: 0;
 }
+.small-gap{
+    gap: 3px;
+}
 
 .flex {
     display: flex;

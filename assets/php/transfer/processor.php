@@ -65,6 +65,7 @@
         $myname = $_SESSION['Name'];
 
         $myAmount;
+        
         $Fetch = "SELECT * FROM main WHERE `main`.`Account_number` = $myacc;";
         $Result = mysqli_query($con, $Fetch);
         while ($data = mysqli_fetch_assoc($Result)) {
@@ -75,16 +76,15 @@
         $hisAcc = $_POST['accountnumber'];
         $AmountSent = $_POST['amount'];
 
-        $hisAmount;
-        $hisName;
-
+        
         if (isset($hisAcc)) {
+            $hisAmount;
+            $hisName;
 
             $Fetch2 = "SELECT * FROM main WHERE `main`.`Account_number` = $hisAcc";
             $Result2 = mysqli_query($con, $Fetch2);
-
             if (mysqli_num_rows($Result2) > 0) {
-                while ($data = mysqli_fetch_assoc($Result)) {
+                while ($data = mysqli_fetch_assoc($Result2)) {
                     $hisAmount = $data['Amount'];
                     $hisName = $data['Name'];
                 }
@@ -92,12 +92,15 @@
                 if ($myAmount <= $AmountSent || $myAmount <= 0) {
                     echo "<div class='errorcode'> Funds Insufficient ECODE-04</div><a href='transfer.php'><button class='error-btn'>Retry</button></a>";
                 } else {
-                    $mynewamount = $myAmount - $AmountSent;
-                    $hisnewamount = $hisAmount + $AmountSent;
+                    $mynewamount = 0;
+                    $hisnewamount = 0;
 
+                    $mynewamount = $myAmount - $AmountSent;
+                    
                     $Update = "UPDATE main SET `Amount` = $mynewamount WHERE `main`.`Account_number` = $myacc;";
                     $UResult = mysqli_query($con, $Update);
                     if ($UResult) {
+                        $hisnewamount = $hisAmount + $AmountSent;
                         $Update2 = "UPDATE main SET `Amount` = $hisnewamount WHERE `main`.`Account_number` = $hisAcc;";
                         $UResult2 = mysqli_query($con, $Update2);
                         if ($UResult2) {
