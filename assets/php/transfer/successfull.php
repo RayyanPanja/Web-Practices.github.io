@@ -53,9 +53,9 @@ while ($data = mysqli_fetch_row($Result)) {
         <a href="../../../index.php #About" class="link">About Us</a>
         <a href="../../../index.php #Service" class="link">Services</a>
         <a href="transfer.php" class="link">Transfer</a>
-        <a href="../php/Loan/" class="link">Apply For Loan</a>
-        <a href="../php/Balance/" class="link">Balance</a>
-        <a href="../php/Settings/" class="link"><i class="fas fa-gear rotate"></i></a>
+        <a href="../Loan/" class="link">Apply For Loan</a>
+        <a href="../Balance/balance.php" class="link">Balance</a>
+        <a href="../Settings/" class="link"><i class="fas fa-gear rotate"></i></a>
         <button type="submit" class="logout-btn" id="logout-btn">Logout</button>
 
         <a href="javascript:void(0)" class="icon" id="toggle">
@@ -70,10 +70,10 @@ while ($data = mysqli_fetch_row($Result)) {
                 <a href="../../../index.php #Home" class="side-link">Home</a>
                 <a href="../../../index.php #About" class="side-link">About Us</a>
                 <a href="../../../index.php #Service" class="side-link">Services</a>
-                <a href="../php/transfer/transfer.php" class="active-side-link side-link">Transfer</a>
-                <a href="../php/Loan/" class="side-link">Apply For Loan</a>
-                <a href="../php/Balance/" class="side-link">Balance</a>
-                <a href="../php/Settings/" class="side-link"><i class="fas fa-gear  rotate"></i></a>
+                <a href="../transfer/transfer.php" class="active-side-link side-link">Transfer</a>
+                <a href="../Loan/" class="side-link">Apply For Loan</a>
+                <a href="../Balance/balance.php" class="side-link">Balance</a>
+                <a href="../Settings/" class="side-link"><i class="fas fa-gear  rotate"></i></a>
             </div>
             <button type="submit" class="logout-btn" id="side-logout-btn">Logout</button>
             <p style="position:absolute; bottom:20%; padding: 10px;">Double Click anywhere to Exit Side menu</p>
@@ -150,13 +150,22 @@ while ($data = mysqli_fetch_row($Result)) {
                 txt.style.transition = "all 500ms";
                 txt.style.fontSize = 35 + "px";
             }, 1000);
-            setInterval(() => {
-                receipt.style.transition = "all 500ms";
-                receipt.style.width = 25 + "%";
-                receipt.style.padding = 10 + "px";
-                receipt.style.height = 32 + "vh";
-
-            }, 1500);
+            // Checking Windows Width For Responsiveness
+            if (window.screen.width < 500) {
+                setInterval(() => {
+                    receipt.style.transition = "all 500ms";
+                    receipt.style.width = 100 + "%";
+                    receipt.style.padding = 10 + "px";
+                    receipt.style.height = 32 + "vh";
+                }, 1500);
+            } else {
+                setInterval(() => {
+                    receipt.style.transition = "all 500ms";
+                    receipt.style.width = 25 + "%";
+                    receipt.style.padding = 10 + "px";
+                    receipt.style.height = 32 + "vh";
+                }, 1500);
+            }
         }, 1000);
     })
 </script>
@@ -164,9 +173,3 @@ while ($data = mysqli_fetch_row($Result)) {
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 </html>
-<?php
-$ID = 0;
-$Amount = 0;
-$hisacc = 0;
-$hisname = null;
-?>

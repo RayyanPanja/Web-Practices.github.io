@@ -12,6 +12,7 @@
     .navbar {
         padding: 30px;
     }
+
     .link {
         display: none;
     }
@@ -57,14 +58,17 @@
     .details {
         width: 100%;
     }
-    .profile{
+
+    .profile {
         width: 100px;
         height: 100px;
     }
-    .scroll-x{
+
+    .scroll-x {
         overflow-x: scroll;
     }
-    .card-wrap{
+
+    .card-wrap {
         width: 100%;
     }
 }
@@ -73,14 +77,14 @@
     .grid-3 {
         grid-template-columns: repeat(3, 1fr);
     }
-    
+
     .flex {
         display: grid;
     }
 }
 
 @media screen and (max-width:660px) {
-    
+
     #loginform,
     #logoutform {
         position: absolute;
@@ -90,22 +94,62 @@
         top: none;
     }
 
-    .transfer-form{
+    .transfer-form {
         padding: 5px;
         width: 100%;
     }
-    .keyboard{
-        width: 100%;
-    }
-    .key{
+
+    .keyboard {
         width: 100%;
     }
 
-    .receipt{
+    .key {
         width: 100%;
     }
-    .tick{
+
+    .receipt {
+        width: 100%;
+    }
+
+    .tick {
         left: 15%;
+    }
+
+    .errorcode {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width:660px) {
+    .transactions {
+        position: absolute;
+        bottom: 0;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .search-bar {
+        position: absolute;
+        right: 5%;
+        top: 20%;
+        display: flex;
+        gap: 0;
+        padding: 5px;
+    }
+
+    .balance {
+        display: flex;
+        gap: 10px;
+        position: absolute;
+        top: 10%;
+        left: 10%;
+    }
+    .title{
+        top: 2%;
+    }
+    .title *{
+        color: black;
     }
 
 }

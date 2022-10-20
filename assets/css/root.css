@@ -66,7 +66,8 @@ section {
 .no-gap {
     gap: 0;
 }
-.small-gap{
+
+.small-gap {
     gap: 3px;
 }
 
@@ -175,16 +176,10 @@ footer {
 @keyframes spin {
     0% {
         transform: rotate(0);
-        box-shadow: 0 0 20px 10px #88ff00;
-    }
-
-    50% {
-        box-shadow: 0 0 20px 20px #04ff00;
     }
 
     100% {
         transform: rotate(360deg);
-        box-shadow: 0 0 20px 10px #88ff00;
     }
 }
 

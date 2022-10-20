@@ -39,7 +39,7 @@ $Name = $_SESSION['Name'];
         <a href="#Service" class="link">Services</a>
         <a href="assets/php/transfer/transfer.php" class="link">Transfer</a>
         <a href="assets/php/Loan/" class="link">Apply For Loan</a>
-        <a href="assets/php/Balance/" class="link">Balance</a>
+        <a href="assets/php/Balance/balance.php" class="link">Balance</a>
         <a href="assets/php/Settings/" class="link"><i class="fas fa-gear rotate"></i></a>
         <button type="submit" class="logout-btn" id="logout-btn">Logout</button>
 
@@ -57,7 +57,7 @@ $Name = $_SESSION['Name'];
                 <a href="#Service" class="side-link">Services</a>
                 <a href="assets/php/transfer/transfer.php" class="side-link">Transfer</a>
                 <a href="assets/php/Loan/" class="side-link">Apply For Loan</a>
-                <a href="assets/php/Balance/" class="side-link">Balance</a>
+                <a href="assets/php/Balance/balance.php" class="side-link">Balance</a>
                 <a href="assets/php/Settings/" class="side-link"><i class="fas fa-gear  rotate"></i></a>
             </div>
             <button type="submit" class="logout-btn" id="side-logout-btn">Logout</button>
@@ -108,7 +108,7 @@ $Name = $_SESSION['Name'];
             <h1 class="greet">Developers</h1>
         </div>
 
-        <div class="grid-3" style="overflow-x:scroll;">
+        <div class="grid-3 scroll-x small-gap">
             <div class="card-wrap">
                 <div class="profile">
                     <img src="assets/images/profile-rayyan.png" alt="Profile">

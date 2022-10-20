@@ -1,18 +1,17 @@
 <?php
 include "../connection.php";
 session_start();
-$AccountNumber = $_SESSION['Account'];
+$myacc = $_SESSION['Account'];
 $Password = $_SESSION['Password'];
 $Name = $_SESSION['Name'];
-
-$Amount;
-
-$Fetch = "SELECT * FROM main WHERE `main`.`Account_number` = $AccountNumber;";
-$Result = mysqli_query($con, $Fetch);
-
-while ($data = mysqli_fetch_assoc($Result)) {
-    $Amount = $data['Amount'];
+$myamount;
+$FetchMain = "SELECT * FROM main WHERE `main`.`Account_number` = $myacc;";
+$FetchMainResult = mysqli_query($con, $FetchMain);
+while ($data = mysqli_fetch_assoc($FetchMainResult)) {
+    $myamount = $data['Amount'];
 }
+
+$id = $_POST['receipt'];
 
 ?>
 <!DOCTYPE html>
@@ -49,7 +48,7 @@ while ($data = mysqli_fetch_assoc($Result)) {
         <a href="../../../index.php #Service" class="link">Services</a>
         <a href="transfer.php" class="link">Transfer</a>
         <a href="../php/Loan/" class="link">Apply For Loan</a>
-        <a href="../Balance/balance.php" class="link">Balance</a>
+        <a href="../php/Balance/" class="link">Balance</a>
         <a href="../php/Settings/" class="link"><i class="fas fa-gear rotate"></i></a>
         <button type="submit" class="logout-btn" id="logout-btn">Logout</button>
 
@@ -65,9 +64,9 @@ while ($data = mysqli_fetch_assoc($Result)) {
                 <a href="../../../index.php #Home" class="side-link">Home</a>
                 <a href="../../../index.php #About" class="side-link">About Us</a>
                 <a href="../../../index.php #Service" class="side-link">Services</a>
-                <a href="transfer.php" class="active-side-link side-link">Transfer</a>
+                <a href="../php/transfer/transfer.php" class="side-link">Transfer</a>
                 <a href="../php/Loan/" class="side-link">Apply For Loan</a>
-                <a href="../Balance/balance.php" class="side-link">Balance</a>
+                <a href="balance.php" class="active-side-link side-link">Balance</a>
                 <a href="../php/Settings/" class="side-link"><i class="fas fa-gear  rotate"></i></a>
             </div>
             <button type="submit" class="logout-btn" id="side-logout-btn">Logout</button>
@@ -87,63 +86,69 @@ while ($data = mysqli_fetch_assoc($Result)) {
         </div>
     </dialog>
 
+    <main>
+        <section style="height:100vh;">
+            <div class="balance-cont">
+                <div class="balance">
+                    <span>
+                        <h1>Balance:</h1>
+                    </span>
+                    <span>
+                        <h1 class="number"><?php echo $myamount; ?></h1>
+                    </span>
+                </div>
 
-    <section>
-        <div class="grid">
-
-            <div class="transfer-form">
-                <form action="processor.php" method="post">
-
-                    <div class="row">
-                        <div class="col-lab">
-                            <label for="Account">Account Number</label>
-                        </div>
-                        <div class="col-inp">
-                            <input type="number" name="accountnumber" id="accno" class="input" placeholder="To">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lab">
-                            <label for="Amount">Amount</label>
-                        </div>
-                        <div class="col-inp">
-                            <input type="number" name="amount" id="amount" max="50000" class="input" placeholder="1000/-" required>
-                        </div>
-                    </div>
-                    <div class="keyboard">
-                        <div class="grid-3 no-gap">
-                            <input type="button" class="key" onclick="add(this)" value="1"></input>
-                            <input type="button" class="key" onclick="add(this)" value="2"></input>
-                            <input type="button" class="key" onclick="add(this)" value="3"></input>
-                            <input type="button" class="key" onclick="add(this)" value="4"></input>
-                            <input type="button" class="key" onclick="add(this)" value="5"></input>
-                            <input type="button" class="key" onclick="add(this)" value="6"></input>
-                            <input type="button" class="key" onclick="add(this)" value="7"></input>
-                            <input type="button" class="key" onclick="add(this)" value="8"></input>
-                            <input type="button" class="key" onclick="add(this)" value="9"></input>
-                            <button class="key" type="reset">CLR</button>
-                            <input type="button" class="key" onclick="add(this)" value="0"></input>
-                            <button class="key" type="submit">Pay</button>
-                        </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="transfer-details">
-            <div class="detail">
-                <h1>Account Holder</h1>
-                <h1 class="value"><?php echo $Name; ?></h1>
-            </div>
-            <div class="detail">
-                <h1>Amount</h1>
-                <h1 class="value"><?php echo $Amount; ?></h1>
+                <div class="search-bar">
+                    <a href="balance.php">
+                        <button type="submit" class="search-btn">Show All</button>
+                    </a>
+                </div>
             </div>
 
-        </div>
-        </div>
-    </section>
+            <div class="transactions">
+                <div class="title">
+                    <h1>
+                        Recent Transactions
+                    </h1>
+                </div>
+                <?php
+                $FetchTra = "SELECT * FROM `transaction` WHERE `transaction`.`Receipt_No` = $id;";
+                $FetchTraResult = mysqli_query($con, $FetchTra);
 
+                if (mysqli_num_rows($FetchTraResult) > 0) {
+                    while ($data = mysqli_fetch_assoc($FetchTraResult)) { ?>
+                        <div class="tra-card">
+                            <div class="from">
+                                From:<?php echo $data['From_Acc']; ?>
+                            </div>
+                            <div class="to">
+                                To:<?php echo $data['To_Acc']; ?>
+                            </div>
+                            <div class="id">
+                                ID:<?php echo $data['Receipt_No']; ?>
+                            </div>
+
+                            <div class="amount">
+                                <h1><?php echo $data['Amount']; ?>/-</h1>
+                            </div>
+                            <div class="date">
+                                Date:<?php echo $data['Date']; ?>
+                            </div>
+                            <div class="names">
+                                <div class="receiver"><?php echo $data['Receiver']; ?></div>
+                                <div class="sender"><?php echo $data['Sender']; ?></div>
+                            </div>
+                        </div>
+                    <?php }
+                } else { ?>
+                    <div class="errorcode">No Transactions Yet</div>
+                <?php } ?>
+
+
+            </div>
+
+        </section>
+    </main>
     <footer id="footer">
         <div style="position: absolute; right: 10%;">
             <p>&copy;CopyRight Owned By Team Web Wallet</p>
@@ -162,7 +167,9 @@ while ($data = mysqli_fetch_assoc($Result)) {
 
     </footer>
 </body>
-<script src="../../js/main.js"></script><script>
+
+<script src="../../js/main.js"></script>
+<script>
     // Logout Form Popup
     const LogoutBtn = document.querySelector('#logout-btn');
     const LogoutBtn2 = document.querySelector('#side-logout-btn');
@@ -186,5 +193,6 @@ while ($data = mysqli_fetch_assoc($Result)) {
         LoginForm.close();
     });
 </script>
+
 
 </html>

@@ -58,7 +58,8 @@
 
 }
 
-.profile,.profile img{
+.profile,
+.profile img {
     border-radius: 75px 0 75px 0;
     transition: all 1000ms;
 }
@@ -128,4 +129,88 @@
         0 0 40px 2px #000;
     user-select: none;
     -webkit-user-drag: none;
+}
+
+.balance{
+    display: flex;
+    gap: 10px;
+}
+.search-bar {
+    position: absolute;
+    right: 3%;
+    top: 10%;
+    display: flex;
+    gap: 0;
+    padding: 5px;
+}
+
+.small-input {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.search-btn {
+    font-size: 18px;
+}
+.number{
+    width: fit-content;
+    background: #54545494;
+    border: 2px dotted black;
+}
+.transactions{
+    position: relative;
+    overflow: scroll;
+    margin-top: 3%;
+    padding: 10px;
+    padding-top: 3%;
+    width: 100%;
+    height: 50vh;
+    background: #383737;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 5px;
+}
+.title{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+.title *{
+    font-size: 30px;
+    color: #f4f1f1;
+}
+
+.tra-card{
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    padding: 10px;
+    background: #efefefea;
+    font-size: 20px;
+}
+.amount{
+    font-size: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.date{
+    position: absolute;
+    right: 5%;
+    bottom: 0;
+}
+.names{
+    position: absolute;
+    display: grid;
+    bottom: 10%;
+    left: 5%;
+
+}
+.id{
+    position: absolute;
+    top: 2%;
+    right: 5%;
 }
